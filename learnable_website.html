@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnAble - Empowering Dyslexic Students</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+        
+        .logo-img {
+            height: 60px;
+            width: auto;
+            background: white;
+            padding: 5px 15px;
+            border-radius: 8px;
+        }
+        
+        .tagline {
+            color: rgba(255,255,255,0.95);
+            font-size: 13px;
+            font-style: italic;
+            margin-left: 15px;
+            font-weight: 500;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            padding: 5px 0;
+            font-size: 15px;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+            border-bottom: 2px solid white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f0f0" width="1200" height="600"/><text x="50%" y="50%" font-size="72" fill="%23ddd" text-anchor="middle" dominant-baseline="middle">Students Learning</text></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            color: #667eea;
+            margin-bottom: 50px;
+        }
+        
+        /* About Section */
+        .about {
+            background: #f8f9fa;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .mission-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 30px;
+            border-left: 5px solid #764ba2;
+        }
+        
+        .mission-box h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .stat-item h3 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        
+        .stat-item p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        /* Get Involved Section */
+        .get-involved {
+            background: #f8f9fa;
+        }
+        
+        .involved-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .involved-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .involved-card h3 {
+            color: #667eea;
+            margin: 20px 0 15px;
+            font-size: 22px;
+        }
+        
+        .involved-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .icon-large {
+            font-size: 50px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 20px 20px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo {
+            height: 50px;
+            width: auto;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            font-size: 24px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Logo placeholder using SVG-like styling */
+        .logo-placeholder {
+            height: 60px;
+            padding: 5px 15px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-section">
+                <!-- Votre logo LearnAble ici -->
+                <img src="logo_learnable.png" alt="LearnAble Logo" class="logo-img">
+                <div class="tagline">Learn Your Way, Every Day</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Our Work</a></li>
+                <li><a href="#involved">Get Involved</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>🌟 Every Student Deserves to Shine</h2>
+            <p>Empowering dyslexic students through personalized learning, innovative tools, and a supportive community</p>
+            <div class="cta-buttons">
+                <a href="#involved" class="btn btn-primary">💜 Donate Now</a>
+                <a href="#services" class="btn btn-secondary">📚 Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about container" id="about">
+        <h2 class="section-title">About LearnAble</h2>
+        <div class="about-content">
+            <p>At <strong>LearnAble</strong>, we believe that dyslexia is not a limitation—it's a different way of learning that deserves recognition and support. Founded by passionate educators and advocates, our NGO is dedicated to creating an inclusive learning environment where every dyslexic student can thrive.</p>
+            
+            <p>We provide personalized educational support, assistive technology, specialized tutoring, and confidence-building programs tailored to each student's unique needs. Our holistic approach addresses not only academic challenges but also emotional and social development.</p>
+            
+            <div class="mission-box">
+                <h3>🎯 Our Mission</h3>
+                <p>To empower dyslexic students with the tools, resources, and support they need to overcome learning barriers and achieve their full academic and personal potential.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services container" id="services">
+        <h2 class="section-title">How We Help</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📖</div>
+                <h3>Specialized Tutoring</h3>
+                <p>One-on-one sessions with trained educators who understand dyslexia and use proven multi-sensory teaching methods.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>Assistive Technology</h3>
+                <p>Access to text-to-speech software, audiobooks, dyslexia-friendly fonts, and other digital tools that make learning easier.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Creative Workshops</h3>
+                <p>Art, music, and hands-on activities that build confidence and develop strengths beyond traditional academics.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">👨‍👩‍👧‍👦</div>
+                <h3>Family Support</h3>
+                <p>Guidance and resources for parents and caregivers to better understand and support their child's learning journey.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🤝</div>
+                <h3>Peer Mentoring</h3>
+                <p>Connecting students with successful dyslexic mentors who inspire and share coping strategies.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🏫</div>
+                <h3>School Advocacy</h3>
+                <p>Working with educational institutions to create more inclusive and understanding learning environments.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Our Impact in Numbers</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Students Supported</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Trained Tutors</p>
+                </div>
+                <div class="stat-item">
+                    <h3>85%</h3>
+                    <p>Improved Academic Performance</p>
+                </div>
+                <div class="stat-item">
+                    <h3>30+</h3>
+                    <p>Partner Schools</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Involved Section -->
+    <section class="get-involved container" id="involved">
+        <h2 class="section-title">Get Involved</h2>
+        <div class="involved-grid">
+            <div class="involved-card">
+                <div class="icon-large">💰</div>
+                <h3>Donate</h3>
+                <p>Your contribution helps us provide resources and support to students in need.</p>
+                <a href="#" class="btn btn-primary">Donate Now</a>
+            </div>
+            
+            <div class="involved-card">
+                <div class="icon-large">🙋</div>
+                <h3>Volunteer</h3>
+                <p>Share your time and skills to make a direct impact on students' lives.</p>
+                <a href="#" class="btn btn-primary">Join Us</a>
+            </div>
+            
+            <div class="involved-card">
+                <div class="icon-large">📢</div>
+                <h3>Spread the Word</h3>
+                <p>Follow us on social media and help raise awareness about dyslexia.</p>
+                <a href="#" class="btn btn-primary">Follow Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="logo_learnable.png" alt="LearnAble Logo" class="logo-img">
+                <p>Empowering dyslexic students through innovative learning solutions.</p>
+                <p><strong>Learn Your Way, Every Day! ✨</strong></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#about">About Us</a>
+                <a href="#services">Our Services</a>
+                <a href="#involved">Get Involved</a>
+                <a href="#">Success Stories</a>
+                <a href="#">Blog & Resources</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>📧 contact@soorin.com</p>
+                <p>📱 +216 99 356 218</p>
+                <p>📍 Tunis, Tunisia</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div style="margin-top: 20px;">
+        <p style="font-size: 14px; margin-bottom: 10px;">Click to follow us:</p>
+        <a href="https://www.instagram.com/lea_rnable?igsh=NzlxcXUzengzdWYx"><p style="margin-top: 20px;"><strong>@Learn-able</strong></p></a>
+        <img src="QR.jpg" alt="Instagram QR Code" style="width: 120px; height: 120px; background: white; padding: 10px; border-radius: 10px;">
+         
+    </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024 LearnAble NGO. All rights reserved. | Making education accessible for all students.</p>
+        </div>
+    </footer>
+</body>
+</html>
